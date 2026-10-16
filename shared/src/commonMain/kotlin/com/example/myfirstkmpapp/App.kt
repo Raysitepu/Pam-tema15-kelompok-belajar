@@ -39,6 +39,12 @@ fun App() {
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             AppHeader()
+
+            daftarAnggota.forEach { anggota ->
+                AnggotaCard(anggota = anggota)
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
         }
     }
 }
