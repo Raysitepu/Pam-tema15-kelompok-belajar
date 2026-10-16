@@ -1,35 +1,66 @@
-This is a Kotlin Multiplatform project targeting Android, iOS, Desktop (JVM).
-
-* [/iosApp](./iosApp/iosApp) contains an iOS application. Even if you’re sharing your UI with Compose Multiplatform,
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
-
-* [/shared](./shared/src) is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - [commonMain](./shared/src/commonMain/kotlin) is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    the [iosMain](./shared/src/iosMain/kotlin) folder would be the right place for such calls.
-    Similarly, if you want to edit the Desktop (JVM) specific part, the [jvmMain](./shared/src/jvmMain/kotlin)
-    folder is the appropriate location.
-
-### Running the apps
-
-Use the run configurations provided by the run widget in your IDE's toolbar. You can also use these commands and options:
-
-- Android app: `./gradlew :androidApp:assembleDebug`
-- Desktop app:
-  - Hot reload: `./gradlew :desktopApp:hotRun --auto`
-  - Standard run: `./gradlew :desktopApp:run`
-- iOS app: open the [/iosApp](./iosApp) directory in Xcode and run it from there.
-
-### Running tests
-
-Use the run button in your IDE's editor gutter, or run tests using Gradle tasks:
-
-- Android tests: `./gradlew :shared:testAndroidHostTest`
-- Desktop tests: `./gradlew :shared:jvmTest`
-- iOS tests: `./gradlew :shared:iosSimulatorArm64Test`
+# PAM — Tema 15: Kelompok Belajar
+**IF25-22017 Pengembangan Aplikasi Mobile**  
+Program Studi Teknik Informatika — Institut Teknologi Sumatera (ITERA)
 
 ---
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+## Anggota Kelompok
+
+| No | NIM | Nama | Peran |
+|:---:|:---:|:---|:---:|
+| 1 | 123140054 | Marcel Kevin Togap Siagian | Ketua Kelompok |
+| 2 | 123140060 | Nadia Anatashiva | Anggota |
+| 3 | 123140047 | Ray Regan Sitepu | Anggota |
+| 4 | 123140179 | Ripaldy Saputra Lumbantoruan | Anggota |
+
+---
+
+## Informasi Proyek
+* **Nomor Tema**: 15
+* **Topik Tema**: Kelompok Belajar
+* **Fitur Platform Terintegrasi**: Notifikasi
+* **Teknologi**: Kotlin Multiplatform (KMP) & Compose Multiplatform
+* **Target Platform**: Android, Desktop (JVM), iOS
+
+---
+
+## Branching
+Branch `main` ini digunakan sebagai *base template* proyek. Setiap penambahan fitur dan tugas mingguan akan dikerjakan pada branch terpisah:
+* `main`: Base template awal proyek KMP.
+* `Tugas<minggu>`: Branch pengerjaan checkpoint/fitur berkala sebelum di-merge via Pull Request.
+
+---
+
+## Cara Menjalankan Aplikasi
+
+Pastikan Android Studio telah terpasang dengan plugin **Kotlin Multiplatform** serta **JDK 17+**.
+
+### 1. Menjalankan di Desktop (JVM)
+Cara paling cepat dan ringan untuk pengujian kode bersama tanpa emulator:
+```bash
+./gradlew :desktopApp:run
+```
+*(Atau dengan hot reload: `./gradlew :desktopApp:hotRun --auto`)*
+
+### 2. Menjalankan di Android
+Pasang dan jalankan aplikasi ke emulator atau device fisik yang terhubung:
+```bash
+./gradlew :androidApp:installDebug
+```
+*Atau pilih konfigurasi `androidApp` di dropdown toolbar Android Studio lalu klik tombol **Run (▶️)**.*
+
+### 3. Menjalankan di iOS
+*(Khusus macOS dengan Xcode)*
+* Buka folder `./iosApp` pada Xcode, tentukan simulator target, dan jalankan proyek.
+
+### 4. Menjalankan Unit Tests
+```bash
+# Desktop
+./gradlew :shared:jvmTest
+
+# Android
+./gradlew :shared:testAndroidHostTest
+
+# iOS
+./gradlew :shared:iosSimulatorArm64Test
+```
