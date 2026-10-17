@@ -11,7 +11,7 @@ Program Studi Teknik Informatika — Institut Teknologi Sumatera (ITERA)
 | 1 | 123140054 | Marcel Kevin Togap Siagian | Ketua Kelompok |
 | 2 | 123140060 | Nadia Anatashiva | Anggota |
 | 3 | 123140047 | Ray Regan Sitepu | Anggota |
-| 4 | 123140179 | Ripaldy Saputra Lumbantoruan | Anggota |
+| 4 | 123140170 | Ripaldy Saputra Lumbantoruan | Anggota |
 
 ---
 
