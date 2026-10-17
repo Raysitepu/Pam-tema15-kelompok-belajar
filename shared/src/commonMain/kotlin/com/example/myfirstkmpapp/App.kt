@@ -25,6 +25,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.material3.Button
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 
 @Composable
 @Preview
@@ -39,6 +45,7 @@ fun App() {
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             AppHeader()
+            SesiBelajarSection()
 
             daftarAnggota.forEach { anggota ->
                 AnggotaCard(anggota = anggota)
@@ -46,6 +53,17 @@ fun App() {
 
             Spacer(modifier = Modifier.height(16.dp))
         }
+    }
+}
+
+@Composable
+fun SesiBelajarSection() {
+    var tampilInfo by remember { mutableStateOf(false) }
+    Button(onClick = { tampilInfo = !tampilInfo }) {
+        Text(if (tampilInfo) "Tutup Info" else "Info Sesi Belajar")
+    }
+    AnimatedVisibility(tampilInfo) {
+        Text("Sabtu & Minggu, 19.30 WIB di Lab IF")
     }
 }
 
@@ -110,3 +128,4 @@ fun AppHeader(modifier: Modifier = Modifier) {
         }
     }
 }
+
