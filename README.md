@@ -125,6 +125,12 @@ Sesudah collect flow
 
 Keluaran tersebut membuktikan bahwa `ambil(1)` mengembalikan data sesi belajar dan `collect` menerima tiga perubahan status secara berurutan hingga Flow selesai.
 
+### Screenshot Terminal Runner
+
+Tangkapan layar terminal berikut memperlihatkan kompilasi runner yang berhasil, keluaran perubahan status sesi belajar, serta kode keluar `0` setelah eksekusi.
+
+![Bukti eksekusi runner Checkpoint 2 di terminal](./screenshoot/screenshot-terminal-checkpoint2.png)
+
 ---
 
 ## Tangkapan Layar Aplikasi (Screenshots)
