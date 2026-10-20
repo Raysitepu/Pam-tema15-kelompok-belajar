@@ -7,7 +7,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class SumberSesiBelajarPalsu : Sumber<SesiBelajar> {
+class SumberSesiBelajarDummy : Sumber<SesiBelajar> {
 
     private val daftarSesi: List<SesiBelajar> = listOf(
         SesiBelajar(
