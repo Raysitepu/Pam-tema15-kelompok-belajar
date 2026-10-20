@@ -16,51 +16,52 @@ Program Studi Teknik Informatika — Institut Teknologi Sumatera (ITERA)
 ---
 
 ## Informasi Proyek
-* **Nomor Tema**: 15
-* **Topik Tema**: Kelompok Belajar
-* **Fitur Platform Terintegrasi**: Notifikasi
-* **Teknologi**: Kotlin Multiplatform (KMP) & Compose Multiplatform
-* **Target Platform**: Android, Desktop (JVM), iOS
+- **Nomor Tema**: 15
+- **Topik Tema**: Kelompok Belajar
+- **Fitur Platform Terintegrasi**: Notifikasi
+- **Teknologi**: Kotlin Multiplatform (KMP) & Compose Multiplatform
+- **Target Platform**: Android, Desktop (JVM), iOS
 
 ---
 
 ## Branching
-Branch `main` ini digunakan sebagai *base template* proyek. Setiap penambahan fitur dan tugas mingguan akan dikerjakan pada branch terpisah:
-* `main`: Base template awal proyek KMP.
-* `Tugas<minggu>`: Branch pengerjaan checkpoint/fitur berkala sebelum di-merge via Pull Request.
+Branch `main` digunakan sebagai *base template* proyek. Setiap penambahan fitur dan tugas mingguan dikerjakan pada branch terpisah:
+- `main`: Base template awal proyek KMP.
+- `Tugas<minggu>`: Branch pengerjaan checkpoint/fitur berkala sebelum di-merge via Pull Request (contoh: `Tugas1`).
 
 ---
 
-## Cara Menjalankan Aplikasi
+## Dokumentasi Checkpoint 1
 
+Pada tahap **Checkpoint 1**, kelompok telah berhasil menyelesaikan target utama pertemuan pertama:
+
+1. **Setup Lingkungan & KMP**:
+    - Berhasil menginisialisasi proyek berbasis **Compose Multiplatform** yang dapat berjalan pada target **Desktop (JVM)** dan **Android**.
+    - Menerapkan mekanisme **`expect` / `actual`** pada `Platform.kt` untuk menampilkan nama dan versi runtime platform aktif secara dinamis (`getPlatform().name`) pada header aplikasi.
+
+2. **Tampilan Identitas & Tema**:
+    - Menampilkan identitas **Tema 15: Kelompok Belajar** beserta deskripsinya pada header utama.
+    - Menampilkan kartu profil seluruh anggota kelompok (`AnggotaCard`) yang memuat Nama, NIM, inisial avatar dinamis, dan penanda peran (Ketua/Anggota).
+
+3. **Fitur Bonus Interaktivitas State & Animasi**:
+    - Menerapkan **State Management** menggunakan `remember { mutableStateOf(false) }` untuk mengontrol tombol interaktif buka/tutup (*toggle*) informasi jadwal sesi belajar kelompok.
+    - Mengintegrasikan komponen **`AnimatedVisibility`** agar kemunculan jadwal belajar memiliki efek transisi animasi yang halus dan responsif.
+
+---
+
+## Tangkapan Layar Aplikasi (Screenshots)
+
+### 1. Tampilan di Desktop (JVM)
+![Desktop View](./screenshoot/screenshot-desktop.png)
+
+### 2. Tampilan di Android (Emulator / Device Fisik)
+![Android View](./screenshoot/screenshot-android.jpeg)
+---
+
+## Cara Menjalankan Aplikasi
 Pastikan Android Studio telah terpasang dengan plugin **Kotlin Multiplatform** serta **JDK 17+**.
 
 ### 1. Menjalankan di Desktop (JVM)
 Cara paling cepat dan ringan untuk pengujian kode bersama tanpa emulator:
 ```bash
 ./gradlew :desktopApp:run
-```
-*(Atau dengan hot reload: `./gradlew :desktopApp:hotRun --auto`)*
-
-### 2. Menjalankan di Android
-Pasang dan jalankan aplikasi ke emulator atau device fisik yang terhubung:
-```bash
-./gradlew :androidApp:installDebug
-```
-*Atau pilih konfigurasi `androidApp` di dropdown toolbar Android Studio lalu klik tombol **Run (▶️)**.*
-
-### 3. Menjalankan di iOS
-*(Khusus macOS dengan Xcode)*
-* Buka folder `./iosApp` pada Xcode, tentukan simulator target, dan jalankan proyek.
-
-### 4. Menjalankan Unit Tests
-```bash
-# Desktop
-./gradlew :shared:jvmTest
-
-# Android
-./gradlew :shared:testAndroidHostTest
-
-# iOS
-./gradlew :shared:iosSimulatorArm64Test
-```
