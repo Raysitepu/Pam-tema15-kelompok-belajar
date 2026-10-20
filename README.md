@@ -108,7 +108,7 @@ if ($LASTEXITCODE -eq 0) {
 
 ### Bukti Keluaran Konsol
 
-Berikut keluaran aktual dari eksekusi runner pada 20 Oktober 2026 menggunakan Kotlin CLI 2.4.20, JDK 25.0.1, dan `kotlinx-coroutines-core-jvm.jar` dari distribusi Kotlin lokal. Kompilasi dan eksekusi runner selesai dengan kode keluar `0`. Verifikasi ini menggunakan kompilasi CLI mandiri; build aplikasi melalui Gradle belum diverifikasi pada pengerjaan dokumentasi ini.
+Berikut keluaran aktual dari eksekusi runner pada 20 Oktober 2026 menggunakan Kotlin CLI 2.4.20, JDK 25.0.1, dan `kotlinx-coroutines-core-jvm.jar` dari distribusi Kotlin lokal. Kompilasi dan eksekusi runner selesai dengan kode keluar `0`. Bukti eksekusi melalui Gradle yang diberikan kelompok juga disertakan pada screenshot di bawah.
 
 ```text
 Mengambil data sesi belajar...
@@ -127,9 +127,9 @@ Keluaran tersebut membuktikan bahwa `ambil(1)` mengembalikan data sesi belajar d
 
 ### Screenshot Terminal Runner
 
-Tangkapan layar berikut berasal dari eksekusi langsung di PowerShell oleh Ray Regan Sitepu. Terlihat perintah kompilasi dan eksekusi runner, perubahan status sesi belajar, serta kode keluar `0` setelah eksekusi.
+Tangkapan layar yang diberikan kelompok berikut menunjukkan eksekusi runner melalui Gradle dengan perintah `./gradlew :shared:hotRunJvm "-PmainClass=com.example.myfirstkmpapp.runner.MainKt"`. Keluaran menampilkan perubahan status `Dijadwalkan`, `Berlangsung`, hingga `Selesai`, lalu diakhiri dengan `BUILD SUCCESSFUL in 10s`.
 
-![Bukti eksekusi runner Checkpoint 2 di terminal](./screenshoot/screenshot-terminal-checkpoint2.png)
+![Bukti eksekusi runner Checkpoint 2 melalui Gradle](./screenshoot/screenshot-terminal-checkpoint2.jpeg)
 
 ---
 
