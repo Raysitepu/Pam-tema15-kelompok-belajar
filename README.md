@@ -127,7 +127,7 @@ Keluaran tersebut membuktikan bahwa `ambil(1)` mengembalikan data sesi belajar d
 
 ### Screenshot Terminal Runner
 
-Tangkapan layar terminal berikut memperlihatkan kompilasi runner yang berhasil, keluaran perubahan status sesi belajar, serta kode keluar `0` setelah eksekusi.
+Tangkapan layar berikut berasal dari eksekusi langsung di PowerShell oleh Ray Regan Sitepu. Terlihat perintah kompilasi dan eksekusi runner, perubahan status sesi belajar, serta kode keluar `0` setelah eksekusi.
 
 ![Bukti eksekusi runner Checkpoint 2 di terminal](./screenshoot/screenshot-terminal-checkpoint2.png)
 
