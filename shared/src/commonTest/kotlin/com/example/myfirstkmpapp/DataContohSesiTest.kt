@@ -4,6 +4,7 @@ import com.example.myfirstkmpapp.data.cariSesi
 import com.example.myfirstkmpapp.data.daftarSesiBelajarContoh
 import com.example.myfirstkmpapp.data.filterBerdasarkanStatus
 import com.example.myfirstkmpapp.data.urutkanBerdasarkanWaktu
+import com.example.myfirstkmpapp.model.MataKuliah
 import com.example.myfirstkmpapp.model.SesiBelajar
 import com.example.myfirstkmpapp.model.StatusSesiBelajar
 import kotlin.test.Test
@@ -89,5 +90,21 @@ class DataContohSesiTest {
         assertTrue(kosong.urutkanBerdasarkanWaktu(terbaruDulu = true).isEmpty())
         assertTrue(kosong.filterBerdasarkanStatus(StatusSesiBelajar.Dijadwalkan).isEmpty())
         assertTrue(kosong.cariSesi("PAM").isEmpty())
+    }
+
+    @Test
+    fun penambahanSesiBaruMeningkatkanJumlahDanDapatDitemukan() {
+        val sesiBaru = SesiBelajar(
+            id = 99,
+            judul = "PAM: Latihan Tambah Sesi Interaktif",
+            mataKuliah = MataKuliah("IF25-22017", "Pengembangan Aplikasi Mobile", 3),
+            waktuMulai = "2026-10-27T10:00",
+            tautanMeeting = null,
+            status = StatusSesiBelajar.Dijadwalkan
+        )
+        val daftarBaru = listOf(sesiBaru) + daftarSesiBelajarContoh
+        assertEquals(daftarSesiBelajarContoh.size + 1, daftarBaru.size)
+        assertTrue(daftarBaru.cariSesi("Latihan Tambah Sesi").isNotEmpty())
+        assertEquals(StatusSesiBelajar.Dijadwalkan, daftarBaru.first().status)
     }
 }

@@ -41,24 +41,42 @@ private val pilihanStatus = listOf(
 /** Layar pemakai dataset dan helper koleksi, tanpa menyalin logika filter di UI. */
 @Composable
 fun LayarSesiBelajar(semuaSesi: List<SesiBelajar> = daftarSesiBelajarContoh) {
+    var daftarSesi by remember { mutableStateOf(semuaSesi) }
     var kataKunci by rememberSaveable { mutableStateOf("") }
     var indeksStatus by rememberSaveable { mutableIntStateOf(0) }
     var terbaruDulu by rememberSaveable { mutableStateOf(true) }
     var tampilKelompok by rememberSaveable { mutableStateOf(false) }
+    var tampilDialogTambah by rememberSaveable { mutableStateOf(false) }
     // Posisi baru mencegah key item mempertahankan guliran dari urutan sebelumnya.
     val posisiDaftar = key(kataKunci, indeksStatus, terbaruDulu) {
         rememberLazyListState()
     }
-    val sesiTerlihat = remember(semuaSesi, kataKunci, indeksStatus, terbaruDulu) {
-        semuaSesi
+    val sesiTerlihat = remember(daftarSesi, kataKunci, indeksStatus, terbaruDulu) {
+        daftarSesi
             .filterBerdasarkanStatus(pilihanStatus[indeksStatus].status)
             .cariSesi(kataKunci)
             .urutkanBerdasarkanWaktu(terbaruDulu)
     }
-    val jumlahMataKuliah = semuaSesi.map { it.mataKuliah.kode }.distinct().size
-    val jumlahDijadwalkan = semuaSesi.filterBerdasarkanStatus(StatusSesiBelajar.Dijadwalkan).size
+    val jumlahMataKuliah = daftarSesi.map { it.mataKuliah.kode }.distinct().size
+    val jumlahDijadwalkan = daftarSesi.filterBerdasarkanStatus(StatusSesiBelajar.Dijadwalkan).size
 
-    Scaffold(containerColor = MaterialTheme.colorScheme.background) { padding ->
+    Scaffold(
+        containerColor = MaterialTheme.colorScheme.background,
+        floatingActionButton = {
+            ExtendedFloatingActionButton(
+                onClick = { tampilDialogTambah = true },
+                containerColor = MaterialTheme.colorScheme.primary,
+                contentColor = Color.White,
+                shape = RoundedCornerShape(16.dp),
+                icon = {
+                    Text("+", fontSize = 22.sp, fontWeight = FontWeight.Bold)
+                },
+                text = {
+                    Text("Buat Sesi", fontWeight = FontWeight.SemiBold)
+                }
+            )
+        }
+    ) { padding ->
         Box(Modifier.fillMaxSize().padding(padding).consumeWindowInsets(padding).imePadding(), contentAlignment = Alignment.TopCenter) {
             Column(Modifier.widthIn(max = 760.dp).fillMaxWidth().fillMaxHeight()) {
                 Row(
@@ -99,7 +117,7 @@ fun LayarSesiBelajar(semuaSesi: List<SesiBelajar> = daftarSesiBelajarContoh) {
                             )
                         }
                         Column(horizontalAlignment = Alignment.End) {
-                            Text("${semuaSesi.size}", color = Color.White, fontSize = 32.sp, fontWeight = FontWeight.Bold)
+                            Text("${daftarSesi.size}", color = Color.White, fontSize = 32.sp, fontWeight = FontWeight.Bold)
                             Text("total sesi", color = Color.White, style = MaterialTheme.typography.labelSmall)
                         }
                     }
@@ -151,7 +169,7 @@ fun LayarSesiBelajar(semuaSesi: List<SesiBelajar> = daftarSesiBelajarContoh) {
                 LazyColumn(
                     state = posisiDaftar,
                     modifier = Modifier.weight(1f).fillMaxWidth(),
-                    contentPadding = PaddingValues(start = 20.dp, end = 20.dp, top = 4.dp, bottom = 24.dp),
+                    contentPadding = PaddingValues(start = 20.dp, end = 20.dp, top = 4.dp, bottom = 88.dp),
                     verticalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
                     if (sesiTerlihat.isEmpty()) {
@@ -167,6 +185,18 @@ fun LayarSesiBelajar(semuaSesi: List<SesiBelajar> = daftarSesiBelajarContoh) {
                 }
             }
         }
+    }
+    if (tampilDialogTambah) {
+        DialogTambahSesi(
+            daftarMataKuliah = remember(daftarSesi) {
+                daftarSesi.map { it.mataKuliah }.distinctBy { it.kode }
+            },
+            onDismiss = { tampilDialogTambah = false },
+            onTambahSesi = { sesiBaru ->
+                daftarSesi = listOf(sesiBaru) + daftarSesi
+                tampilDialogTambah = false
+            }
+        )
     }
     if (tampilKelompok) {
         AlertDialog(
