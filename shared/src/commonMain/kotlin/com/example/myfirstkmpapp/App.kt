@@ -1,18 +1,13 @@
 package com.example.myfirstkmpapp
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.safeContentPadding
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
@@ -31,28 +26,23 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.material3.lightColorScheme
+import androidx.compose.ui.graphics.Color
+import com.example.myfirstkmpapp.ui.LayarSesiBelajar
 
 @Composable
 @Preview
 fun App() {
-    MaterialTheme {
-        Column(
-            modifier = Modifier
-                .background(MaterialTheme.colorScheme.background)
-                .safeContentPadding()
-                .fillMaxSize()
-                .verticalScroll(rememberScrollState()),
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
-            AppHeader()
-            SesiBelajarSection()
-
-            daftarAnggota.forEach { anggota ->
-                AnggotaCard(anggota = anggota)
-            }
-
-            Spacer(modifier = Modifier.height(16.dp))
-        }
+    MaterialTheme(
+        colorScheme = lightColorScheme(
+            primary = Color(0xFF5145B8),
+            background = Color(0xFFF5F6FA),
+            surface = Color.White,
+            onSurface = Color(0xFF1D2438),
+            onSurfaceVariant = Color(0xFF626A7D)
+        )
+    ) {
+        LayarSesiBelajar()
     }
 }
 
