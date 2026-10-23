@@ -161,24 +161,39 @@ Urutan pengerjaan: **Ray (Dataset & Layar Daftar) â†’ Ripaldy (Komponen Kartu) â
 | 3 | Nadia Anatashiva | 123140060 | Aksi FAB & Formulir Tambah | Menambahkan tombol *Extended Floating Action Button* (FAB) pada `Scaffold`, serta membuat dialog formulir interaktif [`DialogTambahSesi.kt`](shared/src/commonMain/kotlin/com/example/myfirstkmpapp/ui/DialogTambahSesi.kt) saat tombol tambah diklik. |
 | 4 | Marcel Kevin Togap Siagian | 123140054 | Interaktivitas Kartu, Validasi & README | Mengintegrasikan aksi klik kartu ke dialog detail [`DialogDetailSesi.kt`](shared/src/commonMain/kotlin/com/example/myfirstkmpapp/ui/DialogDetailSesi.kt), memvalidasi kompilasi lintas platform, dan menyusun dokumentasi Checkpoint 3 di [README.md](README.md). |
 
-### Tangkapan Layar Tampilan Layar Sesi Belajar (Android)
+### Tangkapan Layar Tampilan Layar Sesi Belajar (Checkpoint 3)
 
-Berikut tampilan visual Layar Sesi Belajar (Checkpoint 3) pada emulator Android Pixel 8 yang memuat banner ringkasan, kolom pencarian, filter chip status, opsi sorting waktu, kartu sesi dengan badge status, serta Floating Action Button:
+Berikut dokumentasi visual tampilan aplikasi pada target **Android** (diuji langsung pada perangkat fisik Android) dan **Desktop (JVM)**, mencakup layar daftar utama, aksi tombol tambah sesi (*Floating Action Button*), dan pop-up rincian sesi belajar:
 
-![Layar Sesi Belajar Android](./screenshoot/screenshot-sesi-belajar-android.png)
+#### 1. Layar Utama Sesi Belajar (Android & Desktop JVM)
+
+| Target Android (Perangkat Fisik) | Target Desktop (JVM Compose) |
+|:---:|:---:|
+| <img src="./screenshoot/screenshot-checkpoint3-android.png" width="360" alt="Layar Utama Android" /> | <img src="./screenshoot/screenshot-checkpoint3-desktop.png" width="460" alt="Layar Utama Desktop" /> |
+| *Tampilan daftar sesi dengan bilah pencarian, filter status, sorting waktu, kartu sesi, dan Floating Action Button (+ Buat Sesi)* | *Tampilan responsif pada jendela Desktop (JVM) menggunakan basis kode Compose Multiplatform yang sama* |
+
+#### 2. Interaktivitas Fitur: Dialog Tambah Sesi & Dialog Detail Sesi
+
+| Aksi Tambah Sesi (Bagian Nadia) | Interaktivitas Detail Sesi (Bagian Marcel) |
+|:---:|:---:|
+| <img src="./screenshoot/screenshot-checkpoint3-tambah.png" width="360" alt="Dialog Tambah Sesi" /> | <img src="./screenshoot/screenshot-checkpoint3-detail.png" width="360" alt="Dialog Detail Sesi" /> |
+| *Dialog formulir interaktif `DialogTambahSesi` saat menekan tombol `+ Buat Sesi` (FAB)* | *Dialog detail `DialogDetailSesi` yang muncul saat salah satu kartu sesi diklik pada daftar* |
 
 ---
 
 ## Tangkapan Layar Aplikasi (Screenshots)
 
-### 1. Tampilan Checkpoint 3 di Android
-![Layar Sesi Belajar Android](./screenshoot/screenshot-sesi-belajar-android.png)
+### 1. Checkpoint 3 - Tampilan Android & Desktop
+- **Android (Perangkat Fisik)**: [`screenshoot/screenshot-checkpoint3-android.png`](./screenshoot/screenshot-checkpoint3-android.png)
+- **Desktop (JVM)**: [`screenshoot/screenshot-checkpoint3-desktop.png`](./screenshoot/screenshot-checkpoint3-desktop.png)
+- **Formulir Tambah Sesi (Nadia)**: [`screenshoot/screenshot-checkpoint3-tambah.png`](./screenshoot/screenshot-checkpoint3-tambah.png)
+- **Modal Detail Sesi (Marcel)**: [`screenshoot/screenshot-checkpoint3-detail.png`](./screenshoot/screenshot-checkpoint3-detail.png)
 
-### 2. Tampilan di Desktop (JVM)
-![Desktop View](./screenshoot/screenshot-desktop.png)
+### 2. Checkpoint 2 - Bukti Eksekusi Runner Terminal
+![Bukti eksekusi runner Checkpoint 2](./screenshoot/screenshot-terminal-checkpoint2.jpeg)
 
-### 3. Tampilan Awal di Android (Checkpoint 1)
-![Android View](./screenshoot/screenshot-android.jpeg)
+### 3. Checkpoint 1 - Tampilan Awal Aplikasi
+![Android View Checkpoint 1](./screenshoot/screenshot-android.jpeg)
 ---
 
 ## Cara Menjalankan Aplikasi
