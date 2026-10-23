@@ -27,6 +27,7 @@ import com.example.myfirstkmpapp.data.filterBerdasarkanStatus
 import com.example.myfirstkmpapp.data.urutkanBerdasarkanWaktu
 import com.example.myfirstkmpapp.model.SesiBelajar
 import com.example.myfirstkmpapp.model.StatusSesiBelajar
+import com.example.myfirstkmpapp.data.PenyimpananSesiBelajar
 
 private data class PilihanStatus(val label: String, val status: StatusSesiBelajar?)
 
@@ -41,7 +42,7 @@ private val pilihanStatus = listOf(
 /** Layar pemakai dataset dan helper koleksi, tanpa menyalin logika filter di UI. */
 @Composable
 fun LayarSesiBelajar(semuaSesi: List<SesiBelajar> = daftarSesiBelajarContoh) {
-    var daftarSesi by remember { mutableStateOf(semuaSesi) }
+    val daftarSesi by PenyimpananSesiBelajar.daftar.collectAsState()
     var kataKunci by rememberSaveable { mutableStateOf("") }
     var indeksStatus by rememberSaveable { mutableIntStateOf(0) }
     var terbaruDulu by rememberSaveable { mutableStateOf(true) }
@@ -202,7 +203,7 @@ fun LayarSesiBelajar(semuaSesi: List<SesiBelajar> = daftarSesiBelajarContoh) {
             },
             onDismiss = { tampilDialogTambah = false },
             onTambahSesi = { sesiBaru ->
-                daftarSesi = listOf(sesiBaru) + daftarSesi
+                PenyimpananSesiBelajar.tambah(sesiBaru)
                 tampilDialogTambah = false
             }
         )
