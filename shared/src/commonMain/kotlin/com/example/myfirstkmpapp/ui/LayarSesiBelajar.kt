@@ -47,6 +47,7 @@ fun LayarSesiBelajar(semuaSesi: List<SesiBelajar> = daftarSesiBelajarContoh) {
     var terbaruDulu by rememberSaveable { mutableStateOf(true) }
     var tampilKelompok by rememberSaveable { mutableStateOf(false) }
     var tampilDialogTambah by rememberSaveable { mutableStateOf(false) }
+    var sesiTerpilih by remember { mutableStateOf<SesiBelajar?>(null) }
     // Posisi baru mencegah key item mempertahankan guliran dari urutan sebelumnya.
     val posisiDaftar = key(kataKunci, indeksStatus, terbaruDulu) {
         rememberLazyListState()
@@ -181,10 +182,18 @@ fun LayarSesiBelajar(semuaSesi: List<SesiBelajar> = daftarSesiBelajarContoh) {
                             }
                         }
                     }
-                    items(sesiTerlihat, key = { it.id }) { sesi -> KartuSesiBelajar(sesi) }
+                    items(sesiTerlihat, key = { it.id }) { sesi ->
+                        KartuSesiBelajar(sesi = sesi, onKlik = { sesiTerpilih = sesi })
+                    }
                 }
             }
         }
+    }
+    sesiTerpilih?.let { sesi ->
+        DialogDetailSesi(
+            sesi = sesi,
+            onDismiss = { sesiTerpilih = null }
+        )
     }
     if (tampilDialogTambah) {
         DialogTambahSesi(

@@ -133,12 +133,51 @@ Tangkapan layar yang diberikan kelompok berikut menunjukkan eksekusi runner mela
 
 ---
 
+## Dokumentasi Checkpoint 3: Dasar Compose Multiplatform
+
+Pada tahap **Checkpoint 3**, kelompok telah berhasil memvisualisasikan model data dari Checkpoint 2 ke dalam **Layar Pertama (Daftar Sesi Belajar)** menggunakan **Compose Multiplatform** untuk target Android dan Desktop (JVM).
+
+### Rangkuman Pengerjaan
+
+Seluruh kode antarmuka pengguna berada di `shared/src/commonMain/kotlin/com/example/myfirstkmpapp/` agar logika dan komponen tampilan dapat dibagikan secara utuh lintas platform.
+
+| Bagian | Implementasi | Hasil pengerjaan |
+|:---|:---|:---|
+| Dataset & Fungsi Koleksi | [`data/DataContohSesi.kt`](shared/src/commonMain/kotlin/com/example/myfirstkmpapp/data/DataContohSesi.kt) | Menyediakan 12 data contoh sesi belajar unik dan fungsi koleksi Kotlin: `urutkanBerdasarkanWaktu`, `filterBerdasarkanStatus`, dan `cariSesi`. |
+| Komponen Kartu & Status | [`ui/KartuSesiBelajar.kt`](shared/src/commonMain/kotlin/com/example/myfirstkmpapp/ui/KartuSesiBelajar.kt) | Composable `KartuSesiBelajar` dengan elevasi, tata letak `Row` & `Column`, format waktu, serta badge visual status `LabelStatusSesi` (`Dijadwalkan`, `Berlangsung`, `Selesai`). |
+| Layar Utama & Daftar | [`ui/LayarSesiBelajar.kt`](shared/src/commonMain/kotlin/com/example/myfirstkmpapp/ui/LayarSesiBelajar.kt) | Menggunakan `Scaffold`, `LazyColumn` dengan `items(key)`, bilah pencarian (*search bar*), tombol *toggle sort*, dan deretan *FilterChip* status. |
+| Aksi Tambah Sesi (FAB) | [`ui/DialogTambahSesi.kt`](shared/src/commonMain/kotlin/com/example/myfirstkmpapp/ui/DialogTambahSesi.kt) | Tombol *Floating Action Button* (FAB) pada `Scaffold` yang memunculkan dialog formulir untuk menambah sesi baru secara interaktif. |
+| Interaktivitas Detail Sesi | [`ui/DialogDetailSesi.kt`](shared/src/commonMain/kotlin/com/example/myfirstkmpapp/ui/DialogDetailSesi.kt) | Dialog pop-up yang muncul saat kartu sesi diklik, menampilkan rincian mata kuliah, waktu, status/ruang, serta tombol pembuka tautan *meeting*. |
+| Pengujian Unit | [`commonTest/.../DataContohSesiTest.kt`](shared/src/commonTest/kotlin/com/example/myfirstkmpapp/DataContohSesiTest.kt) | 8 test case pengujian unit JVM untuk memverifikasi validitas data contoh, fungsi pengurutan, penyaringan, pencarian, dan penambahan sesi baru. |
+
+### Pembagian Tugas Anggota Kelompok
+
+Urutan pengerjaan: **Ray (Dataset & Layar Daftar) → Ripaldy (Komponen Kartu) → Nadia (Aksi FAB & Formulir Tambah) → Marcel (Interaktivitas Detail, Validasi & README)**.
+
+| Urutan | Nama | NIM | Fokus | Kontribusi Checkpoint 3 |
+|:---:|:---|:---:|:---|:---|
+| 1 | Ray Regan Sitepu | 123140047 | Dataset & Layar Utama | Menyiapkan dataset 12 sesi belajar & fungsi koleksi (`DataContohSesi.kt`), struktur awal layar daftar (`LazyColumn`), search bar, filter status, unit test awal, serta screenshot Android. |
+| 2 | Ripaldy Saputra Lumbantoruan | 123140179 | Komponen Kartu & Status | Memisahkan dan merancang komponen modular [`KartuSesiBelajar.kt`](shared/src/commonMain/kotlin/com/example/myfirstkmpapp/ui/KartuSesiBelajar.kt), badge status visual [`LabelStatusSesi`], format waktu lokal, dan styling elevasi kartu. |
+| 3 | Nadia Anatashiva | 123140060 | Aksi FAB & Formulir Tambah | Menambahkan tombol *Extended Floating Action Button* (FAB) pada `Scaffold`, serta membuat dialog formulir interaktif [`DialogTambahSesi.kt`](shared/src/commonMain/kotlin/com/example/myfirstkmpapp/ui/DialogTambahSesi.kt) saat tombol tambah diklik. |
+| 4 | Marcel Kevin Togap Siagian | 123140054 | Interaktivitas Kartu, Validasi & README | Mengintegrasikan aksi klik kartu ke dialog detail [`DialogDetailSesi.kt`](shared/src/commonMain/kotlin/com/example/myfirstkmpapp/ui/DialogDetailSesi.kt), memvalidasi kompilasi lintas platform, dan menyusun dokumentasi Checkpoint 3 di [README.md](README.md). |
+
+### Tangkapan Layar Tampilan Layar Sesi Belajar (Android)
+
+Berikut tampilan visual Layar Sesi Belajar (Checkpoint 3) pada emulator Android Pixel 8 yang memuat banner ringkasan, kolom pencarian, filter chip status, opsi sorting waktu, kartu sesi dengan badge status, serta Floating Action Button:
+
+![Layar Sesi Belajar Android](./screenshoot/screenshot-sesi-belajar-android.png)
+
+---
+
 ## Tangkapan Layar Aplikasi (Screenshots)
 
-### 1. Tampilan di Desktop (JVM)
+### 1. Tampilan Checkpoint 3 di Android
+![Layar Sesi Belajar Android](./screenshoot/screenshot-sesi-belajar-android.png)
+
+### 2. Tampilan di Desktop (JVM)
 ![Desktop View](./screenshoot/screenshot-desktop.png)
 
-### 2. Tampilan di Android (Emulator / Device Fisik)
+### 3. Tampilan Awal di Android (Checkpoint 1)
 ![Android View](./screenshoot/screenshot-android.jpeg)
 ---
 
